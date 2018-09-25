@@ -1,2 +1,1 @@
-<label>{{title}}</label>
-<ap-photo url='' description=''></ap-photo>
+<ap-photo *ngFor="let photo of photos" [url]='photo.url' [description]='photo.description'></ap-photo>
