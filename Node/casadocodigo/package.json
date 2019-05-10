@@ -1,0 +1,18 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "Livraria cada do codigo",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon server.js --ignore *.marko.js"
+  },
+  "author": "Leandro Vilas Boas",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.3",
+    "marko": "4.13.4-1",
+    "nodemon": "^1.19.0",
+    "sqlite3": "^4.0.7"
+  }
+}
