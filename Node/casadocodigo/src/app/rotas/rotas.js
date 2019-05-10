@@ -2,7 +2,7 @@ const LivroDao = require('../infra/livro-dao');
 const db = require('../../config/database');
 
 module.exports = (app) => {
-    app.get('/', function(req, resp) {
+    app.get('/', (req, resp) => {
         resp.send(
             `
                 <html>
@@ -17,7 +17,7 @@ module.exports = (app) => {
         );
     });
     
-    app.get('/livros', function(req, resp) {
+    app.get('/livros', (req, resp) => {
 
         const livroDao = new LivroDao(db);
         livroDao.lista()
@@ -29,4 +29,17 @@ module.exports = (app) => {
                 ))
                 .catch(erro => console.log(erro));
     });
+
+    app.get('/livros/form', (req, resp) => {
+        resp.marko(require('../views/livros/form/form.marko'))
+    });
+
+    app.post('/livros', (req, resp) => {
+        const livroDao = new LivroDao(db);
+        console.log(req.body);
+        livroDao.adicionar(req.body)
+                .then(resp.redirect('/livros'))
+                .catch(erro => console.log(erro));
+    });
+
 };
